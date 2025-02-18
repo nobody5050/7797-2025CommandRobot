@@ -107,6 +107,7 @@ public class RobotContainer
    */
   public RobotContainer()
   {
+    NamedCommands.registerCommand("Shoot", Commands.runOnce(()-> {m_arm.ArmRun(Constants.kArmOut);}));
     // Configure the trigger bindings
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
@@ -185,7 +186,7 @@ public class RobotContainer
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return drivebase.getAutonomousCommand("New Auto");
+    return drivebase.getAutonomousCommand("New New Auto");
 }
 
 public void setMotorBrake(boolean brake)
