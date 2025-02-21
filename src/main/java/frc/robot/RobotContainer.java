@@ -30,6 +30,8 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Climb;
+import frc.robot.commands.TestDrive;
 import java.io.File;
 import java.util.List;
 
@@ -107,11 +109,12 @@ public class RobotContainer
    */
   public RobotContainer()
   {
-    NamedCommands.registerCommand("Shoot", Commands.runOnce(()-> {m_arm.ArmRun(Constants.kArmOut);}));
+    NamedCommands.registerCommand("Shoot", Commands.runOnce(()-> {m_intake.IntakeRun(Constants.kIntakeOut);}));
+    NamedCommands.registerCommand("RunArm", Commands.runOnce(()-> {m_arm.ArmRun(Constants.kArmOut);}));
     // Configure the trigger bindings
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
-    NamedCommands.registerCommand("test", Commands.print("I EXIST"));
+   // NamedCommands.registerCommand("test", Commands.print("I EXIST"));
   }
 
   /**
@@ -186,17 +189,17 @@ public class RobotContainer
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return drivebase.getAutonomousCommand("test1");
+    return drivebase.getAutonomousCommand("Angular");
 }
 
 public void setMotorBrake(boolean brake)
 {
   drivebase.setMotorBrake(brake);
 }
-}
+
    
    
-    /*TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
+    /* TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
       Constants.AutoConstants.kMaxSpeedMetersPerSecond,
       Constants.AutoConstants.kMaxAccelerationMetersPerSecondSquared)
           .setKinematics(DriveConstants.kDriveKinematics);
@@ -212,6 +215,6 @@ public void setMotorBrake(boolean brake)
         PIDController yController = new PIDController(AutoConstants.kPYController, 0, 0);
         ProfiledPIDController thetaController = new ProfiledPIDController(
                 AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
-        thetaController.enableContinuousInput(-Math.PI, Math.PI);*/
+        thetaController.enableContinuousInput(-Math.PI, Math.PI); */
 
-      
+}  

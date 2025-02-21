@@ -33,7 +33,7 @@ public final class Constants
 
   // Intake Subsystem
   public static int kHighIntakeID = 10; // CAN value of kHighIntakeID
-  public static final double kIntakeSpeed = .37; // Update this with your desired intake speed
+  public static final double kIntakeSpeed = .16; // Update this with your desired intake speed
   public static final double kIntakeIn = kIntakeSpeed;
   public static final double kIntakeOut = -kIntakeSpeed;
 
@@ -43,6 +43,13 @@ public final class Constants
    public static final double kArmIn = kArmSpeed;
    public static final double kArmOut = -kArmSpeed;
  
+// Climb Subsystem
+public static int kClimbID = 11; // CAN value of kHighIntakeID
+public static final double kClimbSpeed = .37; // Update this with your desired intake speed
+public static final double kClimbIn = kClimbSpeed;
+public static final double kClimbOut = -kClimbSpeed;
+
+
    // Miscellanous
    public static final double kStopSpeed = 0.0; // stop motor speed
 

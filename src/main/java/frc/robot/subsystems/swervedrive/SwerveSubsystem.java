@@ -219,7 +219,7 @@ public class SwerveSubsystem extends SubsystemBase
     } catch (Exception e)
     {
       // Handle exception as needed
-      e.printStackTrace();
+     // e.printStackTrace();
     }
 
     //Preload PathPlanner Path finding
