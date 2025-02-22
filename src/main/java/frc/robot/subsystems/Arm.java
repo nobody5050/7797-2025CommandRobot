@@ -86,6 +86,10 @@ public class Arm extends SubsystemBase {
     return (Math.abs(Constants.downPIDReference - Units.rotationsToDegrees(m_encoder.getPosition())) <= Constants.outerPIDTolorence);
   }
 
+  public void ArmRun(double speed) {
+    m_armMotor.set(speed);
+  }
+
   public void raiseWithInput(double speed) {
     m_armMotor.set(speed);
   }
