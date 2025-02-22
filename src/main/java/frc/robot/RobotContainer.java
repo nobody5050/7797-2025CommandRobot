@@ -21,6 +21,13 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intake;
+import frc.robot.Constants;
+import frc.robot.commands.ArmLower;
+import frc.robot.commands.ArmRaise;
+import frc.robot.commands.ArmRaiseL1;
+import frc.robot.commands.ArmRaiseL2;
+import frc.robot.commands.ArmRaiseL3;
+import frc.robot.commands.ArmRaiseL4;
 import java.io.File;
 
 import swervelib.SwerveInputStream;
@@ -103,7 +110,7 @@ public class RobotContainer {
       m_intake.IntakeRun(Constants.kIntakeOut);
     }));
     NamedCommands.registerCommand("RunArm", Commands.runOnce(() -> {
-      m_arm.ArmRun(Constants.kArmOut);
+      new ArmRaiseL1(m_arm);
     }));
     // Configure the trigger bindings
     configureBindings();
@@ -172,6 +179,12 @@ public class RobotContainer {
           .onFalse(new InstantCommand(() -> m_arm.ArmRun(Constants.kStopSpeed)));
       driverXbox.rightTrigger().onTrue(new InstantCommand(() -> m_arm.ArmRun(Constants.kArmIn)))
           .onFalse(new InstantCommand(() -> m_arm.ArmRun(Constants.kStopSpeed)));
+
+      // Operator Controls
+      driverXbox.x().whileTrue(new ArmRaiseL1(m_arm));
+      driverXbox.y().whileTrue(new ArmRaiseL2(m_arm));
+      driverXbox.b().whileTrue(new ArmRaiseL3(m_arm));
+      driverXbox.a().whileTrue(new ArmRaiseL4(m_arm));
     }
 
   }
