@@ -9,7 +9,6 @@ import frc.robot.Constants;
 
 public class Climb extends SubsystemBase {
   SparkMax m_climb;
-  
 
   public Climb() {
   /** Creates a new Intake. */
@@ -20,7 +19,6 @@ public class Climb extends SubsystemBase {
   public void ClimbRun(double speed) {
   //set motor speed  to intake, eject or stop
     m_climb.set(speed);
-   
+
   }
 }
-   
