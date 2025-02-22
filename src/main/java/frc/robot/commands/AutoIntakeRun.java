@@ -7,7 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-import frc.robot.Subsystems.Intake;
+import frc.robot.subsystems.Intake;
 
 public class AutoIntakeRun extends Command {
   private Timer timer;
@@ -46,7 +46,7 @@ public class AutoIntakeRun extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //return false;
+    // return false;
     return timer.get() >= m_time;
   }
 }
