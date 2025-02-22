@@ -23,11 +23,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Climb;
-import frc.robot.subsystems.Camera;
-import frc.robot.commands.LeftAuto;
-import frc.robot.commands.RightAuto;
-import frc.robot.commands.CenterAuto;
+import frc.robot.Constants;
+import frc.robot.commands.ArmLower;
+import frc.robot.commands.ArmRaise;
+import frc.robot.commands.ArmRaiseL1;
+import frc.robot.commands.ArmRaiseL2;
+import frc.robot.commands.ArmRaiseL3;
+import frc.robot.commands.ArmRaiseL4;
 import java.io.File;
 
 import swervelib.SwerveInputStream;
@@ -136,7 +138,7 @@ public class RobotContainer {
       m_intake.IntakeRun(Constants.kIntakeOut);
     }));
     NamedCommands.registerCommand("RunArm", Commands.runOnce(() -> {
-      m_arm.ArmRun(Constants.kArmOut);
+      new ArmRaiseL1(m_arm);
     }));
     // Configure the trigger bindings
     configureBindings();
@@ -214,6 +216,12 @@ public class RobotContainer {
         .onFalse(new InstantCommand(() -> m_intake.AlgaeIntake(Constants.kStopSpeed)));
         operatorXbox.b().onTrue(new InstantCommand(() -> m_intake.AlgaeIntake(Constants.kAlgaeIn)))
         .onFalse(new InstantCommand(() -> m_intake.AlgaeIntake(Constants.kStopSpeed)));
+
+      // Operator Controls
+      driverXbox.x().whileTrue(new ArmRaiseL1(m_arm));
+      driverXbox.y().whileTrue(new ArmRaiseL2(m_arm));
+      driverXbox.b().whileTrue(new ArmRaiseL3(m_arm));
+      driverXbox.a().whileTrue(new ArmRaiseL4(m_arm));
     }
 
   }
