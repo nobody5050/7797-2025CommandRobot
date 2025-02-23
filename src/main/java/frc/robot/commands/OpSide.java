@@ -10,10 +10,8 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.AutoIntakeRun;
-import frc.robot.commands.AutoArmRun;
 
-public class TestDrive extends SequentialCommandGroup {
+public class OpSide extends SequentialCommandGroup {
   /**
    * Creates a new Autonomous Drive based on distance. This will drive out for a specified distance,
    * turn around and drive back.
@@ -22,11 +20,13 @@ public class TestDrive extends SequentialCommandGroup {
    * @param m_intake 
    * @param m_Arm The drivetrain subsystem on which this command will run
    */
-  public TestDrive(SwerveSubsystem Drivebase, Arm m_Arm, Intake m_intake) {
+  public OpSide(SwerveSubsystem Drivebase, Arm m_Arm, Intake m_intake) {
     addCommands(
-      Drivebase.getAutonomousCommand("Angular"),
+      Drivebase.getAutonomousCommand("Copy of OpAngle"),
       new AutoArmRun(m_Arm, 1.6),
+      new InstantCommand(() -> m_Arm.ArmRun(Constants.kStopSpeed)),
       new AutoIntakeRun(m_intake, 3));
+      new InstantCommand(() -> m_intake.IntakeRun(Constants.kStopSpeed));
    
   }
 }

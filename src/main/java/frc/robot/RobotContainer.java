@@ -23,6 +23,8 @@ import frc.robot.commands.ArmRaiseL1;
 import frc.robot.commands.ArmRaiseL2;
 import frc.robot.commands.ArmRaiseL3;
 import frc.robot.commands.ArmRaiseL4;
+import frc.robot.commands.OpSide;
+
 import java.io.File;
 import swervelib.SwerveInputStream;
 
@@ -32,7 +34,7 @@ public class RobotContainer {
   private final Climb m_climb = new Climb();
   private final Camera m_camera = new Camera();
   private final SwerveSubsystem drivebase = new SwerveSubsystem(
-      new File(Filesystem.getDeployDirectory(), "swerve/falcon"));
+      new File(Filesystem.getDeployDirectory(), "swerve/kraken"));
   final         CommandXboxController driverXbox = new CommandXboxController(0);
   final         CommandXboxController operatorXbox = new CommandXboxController(1);
 

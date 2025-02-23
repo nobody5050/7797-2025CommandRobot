@@ -46,7 +46,7 @@ public class AutoIntakeRun extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // return false;
+    //return false;
     return timer.get() >= m_time;
   }
 }

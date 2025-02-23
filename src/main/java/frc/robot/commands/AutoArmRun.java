@@ -34,7 +34,13 @@ public class AutoArmRun extends Command {
   @Override
   public void execute() {
     System.out.println("AutoArmRun " + timer.get());
+<<<<<<< HEAD
     m_Arm.ArmRun(Constants.kArmAutoOut);
+||||||| parent of e80ef3b (add changes from arc field, start work on cleanup)
+    m_Arm.ArmRun(Constants.kArmIn);
+=======
+    m_Arm.ArmRun(Constants.kArmOut);
+>>>>>>> e80ef3b (add changes from arc field, start work on cleanup)
   }
 
   // Called once the command ends or is interrupted.
@@ -46,7 +52,7 @@ public class AutoArmRun extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // return false;
+    //return false;
     return timer.get() >= m_time;
   }
 }
