@@ -21,6 +21,8 @@ import frc.robot.commands.ArmRaiseL1;
 import frc.robot.commands.ArmRaiseL2;
 import frc.robot.commands.ArmRaiseL3;
 import frc.robot.commands.ArmRaiseL4;
+import frc.robot.commands.OpSide;
+
 import java.io.File;
 import swervelib.SwerveInputStream;
 
@@ -28,7 +30,7 @@ public class RobotContainer {
   private final Arm m_arm = new Arm();
   private final Intake m_intake = new Intake();
   private final SwerveSubsystem drivebase = new SwerveSubsystem(
-      new File(Filesystem.getDeployDirectory(), "swerve/falcon"));
+      new File(Filesystem.getDeployDirectory(), "swerve/kraken"));
   final CommandXboxController driverXbox = new CommandXboxController(0);
 
   SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
@@ -120,7 +122,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return drivebase.getAutonomousCommand("Angular");
+    return new OpSide(drivebase, m_arm, m_intake);
   }
 
   public void setMotorBrake(boolean brake) {
