@@ -25,6 +25,11 @@ import frc.robot.commands.ArmRaiseL3;
 import frc.robot.commands.ArmRaiseL4;
 import frc.robot.commands.OpSide;
 
+import frc.robot.subsystems.Climb;
+import frc.robot.subsystems.Camera;
+import frc.robot.commands.RightAuto;
+import frc.robot.commands.CenterAuto;
+
 import java.io.File;
 import swervelib.SwerveInputStream;
 
@@ -45,18 +50,12 @@ public class RobotContainer {
    // Setup autonomous select commands
    m_chooser = new SendableChooser<>();
 
-
-   m_chooser.setDefaultOption("Left Auto", 
-   new LeftAuto(drivebase, m_arm, m_intake));
-
    m_chooser.addOption("Right Auto", 
    new RightAuto(drivebase, m_arm, m_intake));
 
    m_chooser.addOption("Center Auto", 
    new CenterAuto(drivebase, m_arm, m_intake));
 
-   
- 
  //SmartDashboard.putData("Chooser", m_chooser);
  SmartDashboard.putData(m_chooser);
  }
